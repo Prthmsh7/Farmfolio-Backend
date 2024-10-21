@@ -19,11 +19,12 @@ const uploadRouter = require("./routes/uploadRoute");
 const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
 const cors = require("cors");
-
+app.use(cors({
+  origin: 'https://farmfolio-marketplace.vercel.app/' // Replace with your frontend URL
+}));
 
 dbConnect();
 app.use(morgan("dev"));
-app.use(cors({origin: "*"}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
